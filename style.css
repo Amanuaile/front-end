@@ -1,0 +1,205 @@
+/* CSS Variables for easy theming */
+:root {
+    --primary-color: #4A90E2;
+    --primary-hover: #357ABD;
+    --bg-color: #F4F7F6;
+    --card-bg: #FFFFFF;
+    --text-main: #333333;
+    --text-muted: #888888;
+    --danger: #E74C3C;
+    --success: #2ECC71;
+    --transition-speed: 0.3s;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+/* Main Container Layout */
+.app-container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Form & Input Flexbox */
+#task-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#task-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition-speed);
+}
+
+#task-input:focus {
+    border-color: var(--primary-color);
+}
+
+#add-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+#add-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    transition: color var(--transition-speed);
+}
+
+.filter-btn.active, .filter-btn:hover {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem 0;
+}
+
+/* Task List */
+#task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Individual Task Item Flexbox */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation for deletion */
+.task-item.fade-out {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.task-title {
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.task-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Completed State Transitions */
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-item.completed {
+    background-color: #eef7f0;
+}
+
+/* Task Actions */
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
+}
+
+.complete-btn { color: var(--success); }
+.delete-btn { color: var(--danger); }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #task-form {
+        flex-direction: column;
+    }
+    #add-btn {
+        width: 100%;
+    }
+}
